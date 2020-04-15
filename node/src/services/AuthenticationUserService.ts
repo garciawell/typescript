@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
-
+import { sign } from 'jsonwebtoken';
 import User from '../models/User';
 
 interface Request {
@@ -10,6 +10,7 @@ interface Request {
 
 interface Response {
   user: User;
+  token: string;
 }
 
 class AuthenticateUserService {
@@ -29,9 +30,14 @@ class AuthenticateUserService {
     }
 
     // Usuário autenticado
+    const token = sign({}, '5a96375de762ee003dfbf8d53727836c', {
+      subject: user.id,
+      expiresIn: '1d',
+    });
 
     return {
       user,
+      token,
     };
   }
 }
