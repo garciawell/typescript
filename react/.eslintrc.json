@@ -32,8 +32,8 @@
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
     "import/extensions": [
       "error",
       "ignorePackages",
