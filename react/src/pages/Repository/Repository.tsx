@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronsLeft, FiChevronRight } from 'react-icons/fi';
 import { Header, RepositoryInfo, Issues } from './styles';
@@ -36,14 +36,19 @@ const Repository: React.FC = () => {
 
   const { params } = useRouteMatch<RepositoryParams>();
 
-  useEffect(() => {
-    api.get(`/repos/${params.repository}`).then((res) => {
-      setRepo(res.data);
-    });
-    api.get(`/repos/${params.repository}/issues`).then((res) => {
-      setIssues(res.data);
-    });
+  const loadData = useCallback(async () => {
+    const [repoResponse, issuResponse] = await Promise.all([
+      api.get(`/repos/${params.repository}`),
+      api.get(`/repos/${params.repository}/issues`),
+    ]);
+
+    setRepo(repoResponse.data);
+    setIssues(issuResponse.data);
   }, [params.repository]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   return (
     <>
