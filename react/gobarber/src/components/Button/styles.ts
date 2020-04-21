@@ -10,7 +10,7 @@ export const Container = styled.button`
   width: 100%;
   margin-top: 16px;
   color: #312e38;
-  font-weight: 500;
+  font-weight: 600;
   transition: background-color 0.2s;
 
   &:hover {
