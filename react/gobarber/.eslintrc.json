@@ -31,7 +31,9 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-one-expression-per-line": "off",
+    "react/jsx-props-no-spreading": "off",
     "react-hooks/rules-of-hooks": "error",
+    "react/prop-types": "off",
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": [
