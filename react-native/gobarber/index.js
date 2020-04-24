@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 require('react-native').unstable_enableLogBox();
 
 import {AppRegistry} from 'react-native';
