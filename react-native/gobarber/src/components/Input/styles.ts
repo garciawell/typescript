@@ -13,11 +13,12 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const TextInput = styled.TextInput`
+export const TextInputStyled = styled.TextInput`
   flex: 1;
   color: #fff;
   font-size: 16px;
   font-family: 'RobotoSlab-Regular';
+  height: 40px;
 `;
 
 export const Icon = styled(FeatherIcon)`
