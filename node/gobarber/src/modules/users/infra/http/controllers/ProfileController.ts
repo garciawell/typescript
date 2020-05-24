@@ -12,6 +12,7 @@ class ProfileController {
     const user = await showProfile.execute({
       user_id,
     });
+    delete user.password;
 
     return response.json(user);
   }
