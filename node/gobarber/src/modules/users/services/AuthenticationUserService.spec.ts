@@ -22,7 +22,7 @@ describe('AuthUser', () => {
     );
   });
 
-  it('Shoud be able to authentication', async () => {
+  it('should be able to authentication', async () => {
     await createUser.execute({
       name: 'Jonh Doe',
       email: 'jonhdoe@gmail.com',
@@ -37,7 +37,7 @@ describe('AuthUser', () => {
     expect(response).toHaveProperty('token');
   });
 
-  it('Shoud not be able to authentication with no user', async () => {
+  it('should not be able to authentication with no user', async () => {
     await expect(
       authUser.execute({
         email: 'jonhdoe@gmail.com',
@@ -46,7 +46,7 @@ describe('AuthUser', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('Shoud not be able to authentication with wrong password', async () => {
+  it('should not be able to authentication with wrong password', async () => {
     await createUser.execute({
       name: 'Jonh Doe',
       email: 'jonhdoe@gmail.com',

@@ -20,7 +20,7 @@ describe('UpdateProfile', () => {
     );
   });
 
-  it('Shoud be able to update the profile', async () => {
+  it('should be able to update the profile', async () => {
     const user = await fakeUsersepository.create({
       name: 'John Doe',
       email: 'johdoe@gmail.com',
@@ -37,7 +37,7 @@ describe('UpdateProfile', () => {
     expect(updatedUser.email).toBe('johdoe22@gmail.com');
   });
 
-  it('Shoud not be able to change to another user e-mail', async () => {
+  it('should not be able to change to another user e-mail', async () => {
     await fakeUsersepository.create({
       name: 'John Doe',
       email: 'johdoe@gmail.com',
@@ -59,7 +59,7 @@ describe('UpdateProfile', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('Shoud be able to update the password', async () => {
+  it('should be able to update the password', async () => {
     const user = await fakeUsersepository.create({
       name: 'John Doe',
       email: 'johdoe@gmail.com',
@@ -77,7 +77,7 @@ describe('UpdateProfile', () => {
     expect(updatedUser.password).toBe('123123');
   });
 
-  it('Shoud not be able to update the password without old password', async () => {
+  it('should not be able to update the password without old password', async () => {
     const user = await fakeUsersepository.create({
       name: 'John Doe',
       email: 'johdoe@gmail.com',
@@ -94,7 +94,7 @@ describe('UpdateProfile', () => {
     ).rejects.toBeInstanceOf(AppError);
   });
 
-  it('Shoud not be able to update the password with wrong old password', async () => {
+  it('should not be able to update the password with wrong old password', async () => {
     const user = await fakeUsersepository.create({
       name: 'John Doe',
       email: 'johdoe@gmail.com',
@@ -111,7 +111,7 @@ describe('UpdateProfile', () => {
       })
     ).rejects.toBeInstanceOf(AppError);
   });
-  it('Shoud not be able to update the profile from non-existing user', async () => {
+  it('should not be able to update the profile from non-existing user', async () => {
     expect(
       updateProfileService.execute({
         user_id: 'non-existing-user-id',
