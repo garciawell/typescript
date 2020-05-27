@@ -1,13 +1,11 @@
 import 'reflect-metadata';
 import AppError from '@shared/errors/AppError';
-import CreateUsersService from './CreateUserService';
 import AuthenticationUsersService from './AuthenticationUserService';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
-let createUser: CreateUsersService;
 let authUser: AuthenticationUsersService;
 
 describe('AuthUser', () => {
@@ -15,7 +13,6 @@ describe('AuthUser', () => {
     fakeUsersRepository = new FakeUsersRepository();
     fakeHashProvider = new FakeHashProvider();
 
-    createUser = new CreateUsersService(fakeUsersRepository, fakeHashProvider);
     authUser = new AuthenticationUsersService(
       fakeUsersRepository,
       fakeHashProvider
@@ -23,7 +20,7 @@ describe('AuthUser', () => {
   });
 
   it('should be able to authentication', async () => {
-    await createUser.execute({
+    await fakeUsersRepository.create({
       name: 'Jonh Doe',
       email: 'jonhdoe@gmail.com',
       password: '123456',
@@ -47,7 +44,7 @@ describe('AuthUser', () => {
   });
 
   it('should not be able to authentication with wrong password', async () => {
-    await createUser.execute({
+    await fakeUsersRepository.create({
       name: 'Jonh Doe',
       email: 'jonhdoe@gmail.com',
       password: '123456',
