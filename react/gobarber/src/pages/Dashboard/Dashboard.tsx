@@ -6,6 +6,7 @@ import { isToday, format, parseISO, isAfter } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { useAuth } from 'hooks/AuthContext';
 import api from 'services/api';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Header,
@@ -139,7 +140,9 @@ const Dashboard: React.FC = () => {
             <img src={user.avatar_url} alt="Wellington Garcia" />
             <div>
               <span>Bem-vindo,</span>
-              <strong>{user.name}</strong>
+              <Link to="/profile">
+                <strong>{user.name}</strong>
+              </Link>
             </div>
           </Profile>
 
